@@ -16,8 +16,10 @@ return new class extends Migration
             $table->string('NombreEstudiante');
             $table->string('BootCamps');
             $table->string('Empresa');
-            $table->date('FechaInicio');
-            $table->date('FechaFinal');
+            $table->date('FechaInicioTra');
+            $table->date('FechaDuracionTra');
+            $table->date('FechaTeorica');
+            $table->date('FechaFacturacion');
             $table->date('CobroFee');
             $table->integer('MontoCobrar');
             $table->timestamps();

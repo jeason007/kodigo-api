@@ -9,5 +9,5 @@ class kodigo extends Model
 {
     use HasFactory;
      
-    protected $fillable = ['NombreEstudiante', 'BootCamps', 'Empresa', 'FechaInicio', 'FechaFinal', 'CobroFee','MontoCobrar'];
+    protected $fillable = ['NombreEstudiante', 'BootCamps', 'Empresa', 'FechaInicioTra', 'FechaDuracionTra', 'FechaTeorica','FechaFacturacion','duracionPago', 'SalarioFT',  'Fechacashin', 'Facturado' , 'noFacturado'];
 }
