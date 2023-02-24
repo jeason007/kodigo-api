@@ -16,13 +16,16 @@ return new class extends Migration
             $table->string('NombreEstudiante');
             $table->string('BootCamps');
             $table->string('Empresa');
-            $table->date('FechaInicioTra');
-            $table->date('FechaDuracionTra');
-            $table->date('FechaTeorica');
+            $table->date('FechaInicioTrainer');
+            $table->integer('FechaDuracionTrainer');
+            $table->date('FechaTeoricaContratacion');
             $table->date('FechaFacturacion');
-            $table->date('CobroFee');
-            $table->integer('MontoCobrar');
-            $table->timestamps();
+            $table->integer('duracionTerminosPago');
+            $table->integer('SalarioFT');
+            $table->date('Fechacashin');
+            $table->string('Facturado');     
+            $table->string('noFacturado');        
+             $table->timestamps();
         });
     }
 

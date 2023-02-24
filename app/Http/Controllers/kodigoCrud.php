@@ -1,10 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use App\Models\kodigo;
 
 class kodigoCrud extends Controller
@@ -29,10 +26,15 @@ class kodigoCrud extends Controller
         $kodigo->NombreEstudiante = $request->NombreEstudiante;
         $kodigo->BootCamps = $request->BootCamps;
         $kodigo->Empresa = $request->Empresa;
-        $kodigo->FechaInicio = $request->FechaInicio;
-        $kodigo->FechaFinal = $request->FechaFinal;
-        $kodigo->CobroFee = $request->CobroFee;
-        $kodigo->MontoCobrar = $request->MontoCobrar;
+        $kodigo->FechaInicioTrainer = $request->FechaInicioTrainer;
+        $kodigo->FechaDuracionTrainer = $request->FechaDuracionTrainer;
+        $kodigo->FechaTeoricaContratacion = $request->FechaTeoricaContratacion;
+        $kodigo->FechaFacturacion = $request->FechaFacturacion;
+        $kodigo->duracionTerminosPago= $request->duracionTerminosPago;
+        $kodigo->SalarioFT = $request->SalarioFT;
+        $kodigo->Fechacashin = $request->Fechacashin;
+        $kodigo->Facturado = $request->Facturado;
+        $kodigo->noFacturado = $request->noFacturado;
         $kodigo->save();
         return response()->json($kodigo);
 
@@ -59,10 +61,15 @@ class kodigoCrud extends Controller
         $kodigo->NombreEstudiante = $request->NombreEstudiante;
         $kodigo->BootCamps = $request->BootCamps;
         $kodigo->Empresa = $request->Empresa;
-        $kodigo->FechaInicio = $request->FechaInicio;
-        $kodigo->FechaFinal = $request->FechaFinal;
-        $kodigo->CobroFee = $request->CobroFee;
-        $kodigo->MontoCobrar = $request->MontoCobrar;
+        $kodigo-> FechaInicioTrainer = $request->FechaInicioTrainer;
+        $kodigo->FechaDuracionTrainer = $request->FechaDuracionTrainer;
+        $kodigo->FechaTeoricaContratacion = $request->FechaTeoricaContratacion;
+        $kodigo->FechaFacturacion = $request->FechaFacturacion;
+        $kodigo->duracionTerminosPago= $request->duracionTerminosPago;
+        $kodigo->SalarioFT = $request->SalarioFT;
+        $kodigo->Fechacashin = $request->Fechacashin;
+        $kodigo->Facturado = $request->Facturado;
+        $kodigo->noFacturado = $request->noFacturado;
         $kodigo->save();
         return response()->json($kodigo);
 
