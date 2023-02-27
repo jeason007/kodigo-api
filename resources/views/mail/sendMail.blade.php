@@ -67,9 +67,9 @@ notifications_active
                     <td style="margin-right: 10%">{{$item->NombreEstudiante}}</td>
                     <td style="margin-right: 10%">{{$item->Empresa}}</td>
                     <td style="margin-right: 10%">{{$item->BootCamps}}</td>
-                    <td style="margin-right: 10%">{{$item->FechaInicio}}</td>
-                    <td style="margin-right: 10%">{{$item->FechaFinal}}</td>
-                    <td style="margin-right: 10%">{{$item->MontoCobrar}}</td>
+                    <td style="margin-right: 10%">{{$item->FechaInicioTrainer}}</td>
+                    <td style="margin-right: 10%">{{$item->FechaTeoricaContratacion}}</td>
+                    <td style="margin-right: 10%">${{$item->SalarioFT*.20}}</td>
                 </tr>
             @endforeach
         </tbody>

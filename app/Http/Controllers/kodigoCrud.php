@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Exports\KodigoExport;
 use Illuminate\Http\Request;
 use App\Models\kodigo;
+
 
 class kodigoCrud extends Controller
 {
@@ -54,14 +57,15 @@ class kodigoCrud extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         //actualizar datos...
         $kodigo = kodigo::findOrFail($id);
+
         $kodigo->NombreEstudiante = $request->NombreEstudiante;
         $kodigo->BootCamps = $request->BootCamps;
         $kodigo->Empresa = $request->Empresa;
-        $kodigo-> FechaInicioTrainer = $request->FechaInicioTrainer;
+        $kodigo->FechaInicioTrainer = $request->FechaInicioTrainer;
         $kodigo->FechaDuracionTrainer = $request->FechaDuracionTrainer;
         $kodigo->FechaTeoricaContratacion = $request->FechaTeoricaContratacion;
         $kodigo->FechaFacturacion = $request->FechaFacturacion;
@@ -71,6 +75,7 @@ class kodigoCrud extends Controller
         $kodigo->Facturado = $request->Facturado;
         $kodigo->noFacturado = $request->noFacturado;
         $kodigo->save();
+
         return response()->json($kodigo);
 
     }
@@ -85,5 +90,18 @@ class kodigoCrud extends Controller
         $kodigo->delete();
         return response()->noContent();
 
+    }
+
+    public function exportExcel(){
+        return \Excel::download(new KodigoExport, 'reporte.xlsx');
+    }
+
+    public function modificarFecha($data)
+    {
+        foreach($data as $item){
+            $estudiante = kodigo::findOrFail($item->id);
+            $estudiante->Fechacashin = date("Y-m-d",strtotime($item["Fechacashin"]."+ 1 month"));
+            $estudiante->save();
+        }
     }
 }
