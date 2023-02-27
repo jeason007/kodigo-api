@@ -27,3 +27,5 @@ Route::put('/kodigoUpDate/{id}',[kodigoCrud::class,'update']);
 Route::delete('/kodigoDelete/{id}',[kodigoCrud::class,'destroy']);*/
 
 Route::apiResource('/kodigo', kodigoCrud::class);// Rutas para las areas
+
+Route::get('excel', [kodigoCrud::class, 'exportExcel'] );
