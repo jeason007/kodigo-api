@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Exports\KodigoExport;
 use Illuminate\Http\Request;
 use App\Models\kodigo;
+
 
 class kodigoCrud extends Controller
 {
@@ -21,6 +24,19 @@ class kodigoCrud extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'NombreEstudiante' => 'required|max:50',
+            'BootCamps' => 'required|max:30',
+            'Empresa' => "required",
+            'FechaInicioTrainer' => 'required|date',
+            'FechaDuracionTrainer' => 'required',
+            'FechaFacturacion' => 'required|date',
+            'duracionTerminosPago' => 'required|int',
+            'SalarioFT' => 'required|int',
+            'Fechacashin' => 'required|date',
+            'Facturado' => 'required',
+            'noFacturado' => 'required'
+        ]);
         //crear un nuevo dato
         $kodigo = new kodigo;
         $kodigo->NombreEstudiante = $request->NombreEstudiante;
@@ -28,7 +44,7 @@ class kodigoCrud extends Controller
         $kodigo->Empresa = $request->Empresa;
         $kodigo->FechaInicioTrainer = $request->FechaInicioTrainer;
         $kodigo->FechaDuracionTrainer = $request->FechaDuracionTrainer;
-        $kodigo->FechaTeoricaContratacion = $request->FechaTeoricaContratacion;
+        $kodigo->FechaTeoricaContratacion = date("Y-m-d",strtotime($request->FechaInicioTrainer."+ $request->FechaDuracionTrainer month"));
         $kodigo->FechaFacturacion = $request->FechaFacturacion;
         $kodigo->duracionTerminosPago= $request->duracionTerminosPago;
         $kodigo->SalarioFT = $request->SalarioFT;
@@ -54,16 +70,30 @@ class kodigoCrud extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
+        $request->validate([
+            'NombreEstudiante' => 'required|max:50',
+            'BootCamps' => 'required|max:30',
+            'Empresa' => "required",
+            'FechaInicioTrainer' => 'required|date',
+            'FechaDuracionTrainer' => 'required',
+            'FechaFacturacion' => 'required|date',
+            'duracionTerminosPago' => 'required|int',
+            'SalarioFT' => 'required|int',
+            'Fechacashin' => 'required|date',
+            'Facturado' => 'required',
+            'noFacturado' => 'required'
+        ]);
         //actualizar datos...
         $kodigo = kodigo::findOrFail($id);
+
         $kodigo->NombreEstudiante = $request->NombreEstudiante;
         $kodigo->BootCamps = $request->BootCamps;
         $kodigo->Empresa = $request->Empresa;
-        $kodigo-> FechaInicioTrainer = $request->FechaInicioTrainer;
+        $kodigo->FechaInicioTrainer = $request->FechaInicioTrainer;
         $kodigo->FechaDuracionTrainer = $request->FechaDuracionTrainer;
-        $kodigo->FechaTeoricaContratacion = $request->FechaTeoricaContratacion;
+        $kodigo->FechaTeoricaContratacion = date("Y-m-d",strtotime($request->FechaInicioTrainer."+ $request->FechaDuracionTrainer month"));
         $kodigo->FechaFacturacion = $request->FechaFacturacion;
         $kodigo->duracionTerminosPago= $request->duracionTerminosPago;
         $kodigo->SalarioFT = $request->SalarioFT;
@@ -71,6 +101,7 @@ class kodigoCrud extends Controller
         $kodigo->Facturado = $request->Facturado;
         $kodigo->noFacturado = $request->noFacturado;
         $kodigo->save();
+
         return response()->json($kodigo);
 
     }
@@ -83,7 +114,20 @@ class kodigoCrud extends Controller
         //eliminar datos...
         $kodigo = kodigo::findOrFail($id);
         $kodigo->delete();
-        return response()->noContent();
+        return response()->json(['message' => "Eliminado"]);
 
+    }
+
+    public function exportExcel(){
+        return \Excel::download(new KodigoExport, 'reporte.xlsx');
+    }
+
+    public function modificarFecha($data)
+    {
+        foreach($data as $item){
+            $estudiante = kodigo::findOrFail($item->id);
+            $estudiante->Fechacashin = date("Y-m-d",strtotime($item["Fechacashin"]."+ 1 month"));
+            $estudiante->save();
+        }
     }
 }

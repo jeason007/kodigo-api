@@ -14,12 +14,15 @@ class sendMail extends Mailable
     use Queueable, SerializesModels;
 
     protected $data;
+    protected $date;
     /**
      * Create a new message instance.
      */
     public function __construct($data)
     {
         $this->data = $data;
+        // $this->date = $date;
+
     }
 
     /**
