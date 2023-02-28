@@ -24,6 +24,19 @@ class kodigoCrud extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'NombreEstudiante' => 'required|max:50',
+            'BootCamps' => 'required|max:30',
+            'Empresa' => "required",
+            'FechaInicioTrainer' => 'required|date',
+            'FechaDuracionTrainer' => 'required',
+            'FechaFacturacion' => 'required|date',
+            'duracionTerminosPago' => 'required|int',
+            'SalarioFT' => 'required|int',
+            'Fechacashin' => 'required|date',
+            'Facturado' => 'required',
+            'noFacturado' => 'required'
+        ]);
         //crear un nuevo dato
         $kodigo = new kodigo;
         $kodigo->NombreEstudiante = $request->NombreEstudiante;
@@ -31,7 +44,7 @@ class kodigoCrud extends Controller
         $kodigo->Empresa = $request->Empresa;
         $kodigo->FechaInicioTrainer = $request->FechaInicioTrainer;
         $kodigo->FechaDuracionTrainer = $request->FechaDuracionTrainer;
-        $kodigo->FechaTeoricaContratacion = $request->FechaTeoricaContratacion;
+        $kodigo->FechaTeoricaContratacion = date("Y-m-d",strtotime($request->FechaInicioTrainer."+ $request->FechaDuracionTrainer month"));
         $kodigo->FechaFacturacion = $request->FechaFacturacion;
         $kodigo->duracionTerminosPago= $request->duracionTerminosPago;
         $kodigo->SalarioFT = $request->SalarioFT;
@@ -59,6 +72,19 @@ class kodigoCrud extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'NombreEstudiante' => 'required|max:50',
+            'BootCamps' => 'required|max:30',
+            'Empresa' => "required",
+            'FechaInicioTrainer' => 'required|date',
+            'FechaDuracionTrainer' => 'required',
+            'FechaFacturacion' => 'required|date',
+            'duracionTerminosPago' => 'required|int',
+            'SalarioFT' => 'required|int',
+            'Fechacashin' => 'required|date',
+            'Facturado' => 'required',
+            'noFacturado' => 'required'
+        ]);
         //actualizar datos...
         $kodigo = kodigo::findOrFail($id);
 
@@ -67,7 +93,7 @@ class kodigoCrud extends Controller
         $kodigo->Empresa = $request->Empresa;
         $kodigo->FechaInicioTrainer = $request->FechaInicioTrainer;
         $kodigo->FechaDuracionTrainer = $request->FechaDuracionTrainer;
-        $kodigo->FechaTeoricaContratacion = $request->FechaTeoricaContratacion;
+        $kodigo->FechaTeoricaContratacion = date("Y-m-d",strtotime($request->FechaInicioTrainer."+ $request->FechaDuracionTrainer month"));
         $kodigo->FechaFacturacion = $request->FechaFacturacion;
         $kodigo->duracionTerminosPago= $request->duracionTerminosPago;
         $kodigo->SalarioFT = $request->SalarioFT;
@@ -88,7 +114,7 @@ class kodigoCrud extends Controller
         //eliminar datos...
         $kodigo = kodigo::findOrFail($id);
         $kodigo->delete();
-        return response()->noContent();
+        return response()->json(['message' => "Eliminado"]);
 
     }
 

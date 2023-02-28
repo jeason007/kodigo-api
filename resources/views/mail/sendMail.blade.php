@@ -21,7 +21,7 @@
     html{background-color: #2F0743; }
     .container{width: auto; height: 1000px; background-color: white; overflow: hidden;}
     .head{width: 100%; height:80px; background-color: whitesmoke; padding: 5px 5px; position: relative; text-align: left;}
-    .img{width: 80px; height: 80px;  background-image:url(./kofigoim.png); background-repeat: no-repeat; background-size: 100% 100%;  position: absolute; top:10px; left: 10px;}
+    .img{width: 80px; height: 80px;  background-repeat: no-repeat; background-size: 100% 100%;  position: absolute; top:10px; left: 10px;}
     .title{position: absolute; top: 45px; left: 100px; font-family: 'Montserrat', sans-serif;
       font-size: 30px; color: black;}
     .body{width:100%; height: 450px; background-color: #b441eb;  padding: 2px 2px; display: flex; flex-wrap: wrap; justify-content: center; text-align: center; align-items: center;}
@@ -44,7 +44,8 @@
     <div class="container">
     <div class="head">
     <h4 class="title">Kodigo Empleabilidad </h4>
-    <div class="img"></div>
+    {{-- <div class="img"></div> --}}
+    <img class="img" src="{{  asset('img/kofigoim.png')  }}" alt="">
     </div>
     <div class="body">
         <div class="notif">
