@@ -28,7 +28,7 @@ class sendMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Kodigo Empleabilidad Panel',
+            subject: 'Kodigo Empleabilidad Notificacion',
         );
     }
 
