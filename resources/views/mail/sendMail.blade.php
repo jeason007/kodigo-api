@@ -18,17 +18,13 @@
         *{padding: 0; margin: 0; font-family: 'Montserrat', sans-serif;}
        @import url('https://fonts.googleapis.com/css2?family=Carrois+Gothic&family=Golos+Text&family=Montserrat:wght@700;900&display=swap');
 
-    html{background-color: #2F0743; }
-    .container{width: auto; height: 1000px; background-color: white; overflow: hidden;}
-    .head{width: 100%; height:80px; background-color: whitesmoke; padding: 5px 5px; position: relative; text-align: left;}
-    .img{width: 80px; height: 80px;  background-repeat: no-repeat; background-size: 100% 100%;  position: absolute; top:10px; left: 10px;}
-    .title{position: absolute; top: 45px; left: 100px; font-family: 'Montserrat', sans-serif;
-      font-size: 30px; color: black;}
-    .body{width:100%; height: 450px; background-color: #b441eb;  padding: 2px 2px; display: flex; flex-wrap: wrap; justify-content: center; text-align: center; align-items: center;}
-    .notif{width: 900px; height: 400px;  background-color: rgba(0,0,0,0.6); border-radius: 10px; box-shadow: 2px 2px 3px black, -2px -2px 3px black; padding: 5px 5px;}
-    .he{width: 100%; height: auto; background-color: none; color: white; text-align: left; padding: 5px 5px;}
-    .noti{color:whitesmoke; font-size: 15px;  width:200px; height: 30px; padding: 10px 10px; border-radius: 10px; box-shadow: 2px 2px 3px greenyellow, -2px -2px 3px greenyellow;}
-    #cam{color:greenyellow;}
+    html{background-color: #2F0743; font-family: 'Montserrat', sans-serif; height: 100%; height: 100%; }
+    .container{width:100%; height: 100%; background-color: white; overflow: hidden;}
+    .head{width: 100%; height:60px; padding: 5px 5px; position: relative; text-align: center; color:aliceblue; background-color: #2F0743;}
+    .img{width: 200px; height: 45px;   background-repeat: no-repeat; background-size: 100% 100%;  position: absolute; top:10px; left: 10px;}
+    .title{margin-top: 15px; font-size: 15px;}
+    .body{width:100%; height: 100%; background-color:rgba(0,0,0,0.3);  padding: 0px 0px; text-align: center; }
+    
     .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,
@@ -36,51 +32,53 @@
   'GRAD' 0,
   'opsz' 48
 }
+.no{text-align: left; background-color: none; color: red; padding: 10px 10px; font-family: 'Montserrat', sans-serif;}
+.alumnos{width: 100%; height:20px; text-align: center; padding: 10px 10px; background-color:none; font-family: 'Montserrat', sans-serif; color:aqua;}
+.tabla-es{background-color: none; color: white; height:300px; text-align: center; width: 100%; height: auto;}
+.hea{background-color: #2F0743; color: white; border:none;}
+
+.table{background-color: red; border-color: none;}
+.name{width: 100%; height: 100%; background-color: none; text-align: left;}
+.line{width: 100%; height: 2px; background-color: #2F0743;}
+.line-one{padding: 8px 5px; width: 100%; background-color:none; color:#023c48; text-align: center; font-size: 15px;}
+.footer{width: 100%; height: 50px; background-color: #2F0743;}
+.line-two{padding: 8px 5px; width: 100%; background-color:#023c48; color:whitesmoke; text-align: center;}
+.line-tree{padding: 8px 5px; width: 100%; background-color:#f97c00; color:whitesmoke; text-align: center;}
 </style>
     </style>
 </head>
 <body>
     
-    <div class="container">
-    <div class="head">
-    <h4 class="title">Kodigo Empleabilidad </h4>
-    {{-- <div class="img"></div> --}}
-    <img class="img" src="{{  asset('img/kofigoim.png')  }}" alt="">
+    <div className="container">
+    <div className="head">
+    <h4 className="title">Kodigo Empleabilidad </h4>
+    <div className="img" alt="logo"></div>
     </div>
-    <div class="body">
-        <div class="notif">
-        <div class="he">
-            <h4 class="noti"> <span class="material-symbols-outlined" id="cam">
-notifications_active
-</span>    Notificacion De Cobros<i class="fa fa-address-book"></i></h4>
-        </div>
-        </div>
+    <div className="body">
+        <div className="no">Notificacion De Kodigo Empleabilidad</div>
+       
+      <div className="alumnos">Estudiantes Pendientes De Pago </div>
+      <div className="line"></div>
+      <div className="tabla-es">
+      @foreach($estudiantes as $item)
+     <div className="name">
+        <div className="line-one">Nombre Del Estudiante : {{$item->NombreEstudiante}}</div>
+        <div className="line-one"> Nombre De La Empresa : {{$item->Empresa}}</div>
+        <div className="line-one"> Boot Camp Cursado : {{$item->BootCamps}}</div>
+        <div className="line-one"> Fecha Inicio Trainne : {{$item->FechaInicioTrainer}}</div>
+        <div className="line-one"> Fecha Contratacion : {{$item->FechaTeoricaContratacion}}</div>
+        <div className="line-two"> Salario Base : $ {{$item->SalarioFT}}</div>
+        <div className="line-tree"> Descuento Aplicable :  $ {{$item->SalarioFT*.20}}</div>
+        
+     </div>
+     <div className="line"></div>
+     @endforeach
+     
 
-    </div>
-    
-  
+</div>
+</div>
 
-   </div>
-        <tbody>
-        {{-- {{item.NombreEstudiante}} --}}
-            @foreach($estudiantes as $item)
-                <tr>
-                    <td style="margin-right: 10%">{{$item->NombreEstudiante}}</td>
-                    <td style="margin-right: 10%">{{$item->Empresa}}</td>
-                    <td style="margin-right: 10%">{{$item->BootCamps}}</td>
-                    <td style="margin-right: 10%">{{$item->FechaInicioTrainer}}</td>
-                    <td style="margin-right: 10%">{{$item->FechaTeoricaContratacion}}</td>
-                    <td style="margin-right: 10%">${{$item->SalarioFT*.20}}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-    {{-- @foreach ($estudiantes as $item)
-        <p>Nombre estudiante: {{$item->NombreEstudiante}}</p>
-        <p>Bootcamp: {{$item->BootCamps}}</p>
-        <p>Empresa: {{$item->Empresa}}</p>
-        <p>Cobro: {{$item->MontoCobrar}}</p>
-        <br>
-    @endforeach --}}
+</div>
+<div className="footer"></div>
 </body>
 </html>
