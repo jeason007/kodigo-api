@@ -49,36 +49,35 @@
 </head>
 <body>
     
-    <div className="container">
-    <div className="head">
-    <h4 className="title">Kodigo Empleabilidad </h4>
-    <div className="img" alt="logo"></div>
+    <div class="container">
+    <div class="head">
+    <h4 class="title">Kodigo Empleabilidad </h4>
+    <div class="img" alt="logo"></div>
     </div>
-    <div className="body">
-        <div className="no">Notificacion De Kodigo Empleabilidad</div>
+    <div class="body">
+        <div class="no">Notificacion De Kodigo Empleabilidad</div>
        
-      <div className="alumnos">Estudiantes Pendientes De Pago </div>
-      <div className="line"></div>
-      <div className="tabla-es">
+      <div class="alumnos">Estudiantes Pendientes De Pago </div>
+      <div class="line"></div>
+      <div class="tabla-es">
       @foreach($estudiantes as $item)
-     <div className="name">
-        <div className="line-one">Nombre Del Estudiante : {{$item->NombreEstudiante}}</div>
-        <div className="line-one"> Nombre De La Empresa : {{$item->Empresa}}</div>
-        <div className="line-one"> Boot Camp Cursado : {{$item->BootCamps}}</div>
-        <div className="line-one"> Fecha Inicio Trainne : {{$item->FechaInicioTrainer}}</div>
-        <div className="line-one"> Fecha Contratacion : {{$item->FechaTeoricaContratacion}}</div>
-        <div className="line-two"> Salario Base : $ {{$item->SalarioFT}}</div>
-        <div className="line-tree"> Descuento Aplicable :  $ {{$item->SalarioFT*.20}}</div>
+     <div class="name">
+        <div class="line-one">Nombre Del Estudiante : {{$item->NombreEstudiante}}</div>
+        <div class="line-one"> Nombre De La Empresa : {{$item->Empresa}}</div>
+        <div class="line-one"> Boot Camp Cursado : {{$item->BootCamps}}</div>
+        <div class="line-one"> Fecha Inicio Trainne : {{$item->FechaInicioTrainer}}</div>
+        <div class="line-one"> Fecha Contratacion : {{$item->FechaTeoricaContratacion}}</div>
+        <div class="line-two"> Salario Base : $ {{$item->SalarioFT}}</div>
+        <div class="line-tree"> Descuento Aplicable :  $ {{$item->SalarioFT*.20}}</div>
         
      </div>
-     <div className="line"></div>
+     <div class="line"></div>
      @endforeach
      
-
 </div>
 </div>
 
 </div>
-<div className="footer"></div>
+<div class="footer"></div>
 </body>
 </html>

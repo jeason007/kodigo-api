@@ -24,7 +24,8 @@ return new class extends Migration
             $table->integer('SalarioFT');
             $table->date('Fechacashin');
             $table->string('Facturado');     
-            $table->string('noFacturado');        
+            $table->string('noFacturado');
+            $table->string('estado');        
              $table->timestamps();
         });
     }

@@ -33,7 +33,6 @@ class kodigoCrud extends Controller
             'FechaFacturacion' => 'required|date',
             'duracionTerminosPago' => 'required|int',
             'SalarioFT' => 'required|int',
-            'Fechacashin' => 'required|date',
             'Facturado' => 'required',
             'noFacturado' => 'required'
         ]);
@@ -48,9 +47,10 @@ class kodigoCrud extends Controller
         $kodigo->FechaFacturacion = $request->FechaFacturacion;
         $kodigo->duracionTerminosPago= $request->duracionTerminosPago;
         $kodigo->SalarioFT = $request->SalarioFT;
-        $kodigo->Fechacashin = $request->Fechacashin;
+        $kodigo->Fechacashin = $request->FechaFacturacion;
         $kodigo->Facturado = $request->Facturado;
         $kodigo->noFacturado = $request->noFacturado;
+        $kodigo->estado = "Activo";
         $kodigo->save();
         return response()->json($kodigo);
 
@@ -84,6 +84,7 @@ class kodigoCrud extends Controller
             'Fechacashin' => 'required|date',
             'Facturado' => 'required',
             'noFacturado' => 'required'
+            // 'estado' => 'required'
         ]);
         //actualizar datos...
         $kodigo = kodigo::findOrFail($id);
@@ -100,6 +101,7 @@ class kodigoCrud extends Controller
         $kodigo->Fechacashin = $request->Fechacashin;
         $kodigo->Facturado = $request->Facturado;
         $kodigo->noFacturado = $request->noFacturado;
+        $kodigo->estado = $request->estado;
         $kodigo->save();
 
         return response()->json($kodigo);

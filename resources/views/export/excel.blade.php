@@ -21,9 +21,9 @@
                 <th>Duración terminos de pago</th>
                 <th>Salario FT</th>
                 <th>Fecha cash in</th>
-                <th>Ya pasó fecha</th>
                 <th>FACTURADO S/N</th>
                 <th>Motivo NO facturado</th>
+                <th>Estado del Estudiante</th>
             </tr>
         </thead>
         <tbody>
@@ -39,15 +39,9 @@
                     <td>{{$item->duracionTerminosPago}}</td>
                     <td>{{$item->SalarioFT}}</td>
                     <td>{{$item->Fechacashin}}</td>
-                    <td>
-                        @if(date("Y-m-d") <= $item->Fechacashin && substr(date("d-m-Y"), 3) == substr(date("d-m-Y",strtotime($item->Fechacashin)),3))
-                            No
-                        @else
-                            Si
-                        @endif
-                    </td>
                     <td>{{$item->Facturado}}</td>
                     <td>{{$item->noFacturado}}</td>
+                    <td>{{$item->estado}}</td>
                 </tr>
             @endforeach
         </tbody>
