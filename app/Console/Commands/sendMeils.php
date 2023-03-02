@@ -35,10 +35,10 @@ class sendMeils extends Command
         $date = Carbon::now()->timezone('America/El_Salvador');
         $date = substr($date, 0 ,10);
 
-        $estudiantes = Kodigo::where([["Fechacashin","=",$date],["FechaTeoricaContratacion",">",$date]])->get();
+        $estudiantes = Kodigo::where([["Fechacashin","=",$date] , ['estado', '=', 'Activo']])->get();
 
         if(count($estudiantes) >= 1){
-            if(Mail::to('samsungj712399@gmail.com')->send(new sendMail($estudiantes))){
+            if(Mail::to(['joseartero0@gmail.com','joseartero31@gmail.com'])->send(new sendMail($estudiantes))){
                 $kodigo = new kodigoCrud;
                 $kodigo->modificarFecha($estudiantes);
             }
