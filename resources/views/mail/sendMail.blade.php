@@ -45,7 +45,7 @@
 .line-two{padding: 8px 5px; width: 100%; background-color:#023c48; color:whitesmoke; text-align: center;}
 .line-tree{padding: 8px 5px; width: 100%; background-color:#f97c00; color:whitesmoke; text-align: center;}
 </style>
-    </style>
+
 </head>
 <body>
     
