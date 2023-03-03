@@ -83,8 +83,8 @@ class kodigoCrud extends Controller
             'SalarioFT' => 'required|int',
             'Fechacashin' => 'required|date',
             'Facturado' => 'required',
-            'noFacturado' => 'required'
-            // 'estado' => 'required'
+            'noFacturado' => 'required',
+            'estado' => 'required'
         ]);
         //actualizar datos...
         $kodigo = kodigo::findOrFail($id);

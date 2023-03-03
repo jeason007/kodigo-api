@@ -14,6 +14,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('command:sendMeils')->everyMinute();
+        //$schedule->command('command:sendMeils')->dailyAt('7:00');
+
     }
 
     /**
