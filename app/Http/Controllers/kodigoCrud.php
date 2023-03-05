@@ -36,6 +36,7 @@ class kodigoCrud extends Controller
             'Facturado' => 'required',
             'noFacturado' => 'required'
         ]);
+
         //crear un nuevo dato
         $kodigo = new kodigo;
         $kodigo->NombreEstudiante = $request->NombreEstudiante;
@@ -52,6 +53,7 @@ class kodigoCrud extends Controller
         $kodigo->noFacturado = $request->noFacturado;
         $kodigo->estado = "Activo";
         $kodigo->save();
+        
         return response()->json($kodigo);
 
     }
