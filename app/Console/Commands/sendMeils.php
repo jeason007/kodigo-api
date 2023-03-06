@@ -38,6 +38,10 @@ class sendMeils extends Command
         $estudiantes = Kodigo::where([["Fechacashin","=",$date] , ['estado', '=', 'Activo']])->get();
 
         if(count($estudiantes) >= 1){
+             /* 
+             configuracion de correos a notificar puede colocar uno o mas correos.......
+             ejemplo: 'mail@gmail.com','segundocorreo@gmail.com'
+             */
             if(Mail::to(['mail@mail.com'])->send(new sendMail($estudiantes))){
                 $kodigo = new kodigoCrud;
                 $kodigo->modificarFecha($estudiantes);

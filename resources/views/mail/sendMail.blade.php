@@ -34,7 +34,8 @@
 }
 .no{text-align: left; background-color: none; color: red; padding: 10px 10px; font-family: 'Montserrat', sans-serif;}
 .alumnos{width: 100%; height:20px; text-align: center; padding: 10px 10px; background-color:none; font-family: 'Montserrat', sans-serif; color:aqua;}
-.tabla-es{background-color: none; color: white;  text-align: center; width: 100%; height: auto; border-radius: 10px;}
+.tabla-es{background-color: none; color: white; 
+   text-align: center; width: 100%; height: auto; border-radius: 10px;}
 .hea{background-color: #2F0743; color: white; border:none;}
 
 .table{background-color: red; border-color: none;}

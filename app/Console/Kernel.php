@@ -14,8 +14,12 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         // $schedule->command('command:sendMeils')->everyMinute();
+        /* 
+             configuracion la hora que se enviara el la notificacion al correo.......
+            
+             */
         $schedule->command('command:sendMeils')->dailyAt('6:00')->timezone('America/El_Salvador');
-
+         
     }
 
     /**
