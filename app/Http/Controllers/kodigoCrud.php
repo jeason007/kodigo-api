@@ -30,7 +30,6 @@ class kodigoCrud extends Controller
             'Empresa' => "required",
             'FechaInicioTrainer' => 'required|date',
             'FechaDuracionTrainer' => 'required',
-            'FechaFacturacion' => 'required|date',
             'duracionTerminosPago' => 'required|int',
             'SalarioFT' => 'required|int',
             'Facturado' => 'required',
@@ -45,10 +44,10 @@ class kodigoCrud extends Controller
         $kodigo->FechaInicioTrainer = $request->FechaInicioTrainer;
         $kodigo->FechaDuracionTrainer = $request->FechaDuracionTrainer;
         $kodigo->FechaTeoricaContratacion = date("Y-m-d",strtotime($request->FechaInicioTrainer."+ $request->FechaDuracionTrainer month"));
-        $kodigo->FechaFacturacion = $request->FechaFacturacion;
+        $kodigo->FechaFacturacion = $kodigo->FechaTeoricaContratacion;
         $kodigo->duracionTerminosPago= $request->duracionTerminosPago;
         $kodigo->SalarioFT = $request->SalarioFT;
-        $kodigo->Fechacashin = $request->FechaFacturacion;
+        $kodigo->Fechacashin = date("Y-m-d",strtotime($kodigo->FechaFacturacion."+ $request->duracionTerminosPago days"));
         $kodigo->Facturado = $request->Facturado;
         $kodigo->noFacturado = $request->noFacturado;
         $kodigo->estado = "Activo";
@@ -130,7 +129,7 @@ class kodigoCrud extends Controller
     {
         foreach($data as $item){
             $estudiante = kodigo::findOrFail($item->id);
-            $estudiante->Fechacashin = date("Y-m-d",strtotime($item["Fechacashin"]."+ 1 month"));
+            $estudiante->Fechacashin = date("Y-m-d",strtotime($item["Fechacashin"]."+ $estudiante->duracionTerminosPago days"));
             $estudiante->save();
         }
     }

@@ -13,8 +13,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('command:sendMeils')->everyMinute();
-        //$schedule->command('command:sendMeils')->dailyAt('7:00');
+        // $schedule->command('command:sendMeils')->everyMinute();
+        $schedule->command('command:sendMeils')->dailyAt('6:00')->timezone('America/El_Salvador');
 
     }
 

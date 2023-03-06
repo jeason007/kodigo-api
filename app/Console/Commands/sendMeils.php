@@ -38,7 +38,7 @@ class sendMeils extends Command
         $estudiantes = Kodigo::where([["Fechacashin","=",$date] , ['estado', '=', 'Activo']])->get();
 
         if(count($estudiantes) >= 1){
-            if(Mail::to(['samsungj712399@gmail.com'])->send(new sendMail($estudiantes))){
+            if(Mail::to(['mail@mail.com'])->send(new sendMail($estudiantes))){
                 $kodigo = new kodigoCrud;
                 $kodigo->modificarFecha($estudiantes);
             }
